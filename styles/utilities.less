@@ -2,9 +2,7 @@
 @import "ui-variables";
 
 .key-binding {
-  background: -webkit-linear-gradient(
-    rgba(100, 100, 100, 0.5),
-    rgba(70,70,70, 0.5));
+  .btn-background(@text-color,@light-blue);
   -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
   display: inline-block;
   line-height: 100%;
@@ -14,8 +12,33 @@
   font-size: @font-size - 1px;
   padding: @component-padding / 2;
 }
+.selected .key-binding {
+  background-color: rgba(0,0,0,0.7) !important;
+}
 
 .badge {
   .text(highlight);
+  border: 1px solid;
   background: @background-color-highlight;
+  box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.1);
+}
+.badge {
+  &.badge-success,
+  &.badge-info,
+  &.badge-warning,
+  &.badge-error {
+    color: @black;
+  }
+  &.badge-success {
+    background: @background-color-success;
+  }
+  &.badge-info {
+    background: @background-color-info;
+  }
+  &.badge-warning {
+    background: @background-color-warning;
+  }
+  &.badge-error {
+    background: @background-color-error;
+  }
 }

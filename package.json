@@ -1,10 +1,10 @@
 {
-  "name": "atom-dark-ui",
+  "name": "90s-tshirt-ui",
   "theme": "ui",
-  "version": "0.51.1",
-  "description": "A dark UI theme for Atom",
+  "version": "0.0.0",
+  "description": "A dark pastel UI theme for Atom",
   "license": "MIT",
-  "repository": "https://github.com/atom/atom-dark-ui",
+  "repository": "https://github.com/melinadonati/90s-tshirt-ui",
   "engines": {
     "atom": ">0.40.0"
   }

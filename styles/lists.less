@@ -43,6 +43,13 @@
   li.list-nested-item.selected > .list-item {
     .text(selected);
   }
+
+  .list-item.selected {
+    background: @background-color-selected;
+    &::before {
+      content: none;
+    }
+  }
 }
 
 .select-list ol.list-group,
@@ -58,7 +65,9 @@
   // We want to highlight the background of the list items because we dont
   // know their size.
   li.selected {
+    color: @text-color;
     background-color: @background-color-selected;
+    border: 1px solid @light-blue !important;
     &:before{ display: none; }
   }
 
@@ -126,5 +135,5 @@ li.ui-draggable-dragging, li.ui-sortable-helper {
   list-style: none;
   padding: 0 @component-padding;
   background: @background-color-highlight;
-  box-shadow: 0 0 1px @base-border-color;
+  box-shadow: 0 0 1px @base-shadow-color;
 }

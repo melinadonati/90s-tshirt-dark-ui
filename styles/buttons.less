@@ -1,37 +1,39 @@
 @import "ui-variables";
 @import "ui-mixins";
 
-.btn-background (@color, @hover-color, @selected-color, @text-color) {
-  color: @text-color;
-  background-color: transparent;
-  background-image: -webkit-linear-gradient(@color, darken(@color, 5%));
+.btn-background (@color, @hover-color) {
+  @selected-color: light(@hover-color, 10%);
+
+  color: @color;
+  border: 2px solid;
+  background-color: rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
 
   &:focus {
-    color: @text-color;
+    border-color: lighten(@color,10%);
   }
   &:hover {
-    color: @text-color-highlight;
-    background-image: -webkit-linear-gradient(@hover-color, darken(@hover-color, 5%));
+    color: @hover-color;
+    box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.2);
   }
   &.selected,
   &.selected:hover {
-    color: @text-color-highlight;
-    background-image: -webkit-linear-gradient(darken(@selected-color, 5%), @selected-color);
+    color: @selected-color;
     &:hover {
-      background-image: -webkit-linear-gradient(@selected-color, darken(@selected-color, 5%));
+      background-color: rgba(0,0,0,0.6);
+      box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.3);
     }
   }
 }
 
 .btn-variant (@color) {
-  @bg: darken(@color, 10%);
-  @hover: @color;
-  @selected: @color;
-  .btn-background(@bg, @hover, @selected, @text-color-highlight);
+  @light: light(@color, 10%);
+  .btn-background(@color, @light);
 }
 
 .btn {
-  .btn-background(@button-background-color, @button-background-color-hover, @button-background-color-selected, @text-color);
+  .btn-background(@text-color,@light-blue);
 }
 
 .btn.btn-primary {
@@ -48,6 +50,47 @@
 }
 .btn.btn-error {
   .btn-variant(@background-color-error);
+}
+
+.btn-toolbar,
+.btn-group,
+.btn {
+    vertical-align: top;
+    margin: 3%;
+    &.inline-block-tight {
+      margin: 2%;
+    }
+}
+.btn-group .btn.selected,
+.btn-group .btn {
+    margin: 0;
+    box-shadow: none;
+    border-right: 1px solid;
+    & + .btn {
+      border-left: 1px solid;
+    }
+    &:first-child {
+      border-left: 2px solid;
+    }
+    &:last-child {
+      border-right: 2px solid;
+    }
+}
+.btn-group {
+  box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  &:hover {
+    box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.2);
+  }
+  &.selected,
+  &.selected:hover {
+    &:hover {
+      box-shadow: 1px 1px 0px 3px rgba(0,0,0,0.3);
+    }
+  }
+}
+.selected .btn {
+  background-color: rgba(0,0,0,0.7) !important;
 }
 
 .caret {
